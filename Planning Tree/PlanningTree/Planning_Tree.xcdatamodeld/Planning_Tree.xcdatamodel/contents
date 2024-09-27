@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="22G436" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Plan" representedClassName="Plan" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String"/>
+        <relationship name="rootNode" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="PlanNode" inverseName="plan" inverseEntity="PlanNode"/>
+    </entity>
+    <entity name="PlanNode" representedClassName="PlanNode" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isHighlighted" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="title" attributeType="String"/>
+        <relationship name="children" toMany="YES" deletionRule="Cascade" destinationEntity="PlanNode" inverseName="parent" inverseEntity="PlanNode"/>
+        <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PlanNode" inverseName="children" inverseEntity="PlanNode"/>
+        <relationship name="plan" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Plan" inverseName="rootNode" inverseEntity="Plan"/>
+    </entity>
+</model>
